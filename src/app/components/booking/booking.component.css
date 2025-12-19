@@ -1,0 +1,116 @@
+.rooms-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;           /* ⬅ permette lo scroll orizzontale */
+  padding: 20px;
+  scroll-snap-type: x mandatory; /* scroll piacevole e controllato */
+  scrollbar-width: thin;      /* per Firefox */
+}
+
+.rooms-grid::-webkit-scrollbar { /* Chrome/Edge scrollbar */
+  height: 8px;
+}
+
+.rooms-grid::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}
+
+.room-card {
+  flex: 0 0 300px;            /* ⬅ larghezza fissa card, resta verticale dentro */
+  scroll-snap-align: start;   /* card si allinea al bordo */
+  transition: transform 0.2s ease;
+  position: relative;         /* necessario per la X */
+}
+
+
+.room-card:hover {
+  transform: translateY(-4px);
+}
+
+.room-card.expanded {
+  grid-column: span 2;
+  padding: 24px;
+}
+
+.room-header img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.room-details {
+  color: #000000;
+  margin-top: 16px;
+}
+
+.room-info {
+  margin-bottom: 16px;
+  color: black;
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+
+.room-info p {
+  margin: 4px 0;
+}
+
+.booking-fields {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;   /* Allinea verticalmente */
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;         /* evita overflow su mobile */
+}
+
+.field-group {
+  flex: 1;
+  min-width: 250px;        /* evita rotture */
+}
+
+.field-group mat-form-field {
+  width: 100%;             /* forza l’allineamento */
+}
+
+.book-btn {
+  margin-top: 15px;
+  background: #43a047;
+  border: none;
+  padding: 10px 18px;
+  color: #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.book-btn:hover {
+  background: #2e7d32;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #e74c3c;
+  border: none;
+  color: white;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #000000;
+}
+
+.room-card {
+  position: relative;
+}

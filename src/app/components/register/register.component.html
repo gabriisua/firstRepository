@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="header">
+    <h2 class="title">Registrazione</h2>
+  </div>
+
+  <div class="input-group">
+    <input [(ngModel)]="newUser.username" type="text" placeholder="Username" class="input-field">
+  </div>
+
+  <div class="input-group">
+    <input [(ngModel)]="newUser.email" type="email" placeholder="Email" class="input-field">
+  </div>
+
+  <div class="input-group">
+    <input [(ngModel)]="newUser.phoneNumber" type="text" placeholder="Telefono" class="input-field">
+  </div>
+
+  <div class="input-group">
+    <input [(ngModel)]="newUser.password" type="password" placeholder="Password" class="input-field">
+  </div>
+
+  <div class="input-group">
+    <input [(ngModel)]="confirmPassword" type="password" placeholder="Conferma Password" class="input-field">
+  </div>
+
+  <button (click)="register()" class="btn btn-primary">Registrati</button>
+
+  <div class="button-row">
+    <button (click)="goToLogin()" class="btn btn-secondary">Torna al login</button>
+    <button (click)="resetPassword()" class="btn btn-tertiary">Reset Password</button>
+  </div>
+
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>

@@ -1,0 +1,90 @@
+
+
+<div class="container">
+
+  <!-- Messaggio di conferma -->
+  <div *ngIf="successMessage" class="successMessage alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Header principale -->
+  <header class="header">
+    <h1 class="title">Gestione Camere</h1>
+  </header>
+
+  <!-- Form aggiunta camera -->
+  <section class="form-section">
+    <h2 class="form-title">Aggiungi Camera</h2>
+
+    <div class="form-container">
+
+      <div class="input-group1">
+        <label>Nome:</label>
+        <input [(ngModel)]="newRoom.name" type="text" class="input-field">
+      </div>
+
+      <div class="input-group2">
+        <label>Posti letto:</label>
+        <input [(ngModel)]="newRoom.beds" type="number" min="1" class="input-field">
+      </div>
+
+      <div class="input-group3">
+        <label>Immagine:</label>
+        <input type="file" (change)="onFileSelected($event)" class="input-field">
+      </div>
+
+      <div class="input-group4">
+        <label>Prezzo per notte:</label>
+        <div class="input-with-symbol">
+          <input [(ngModel)]="newRoom.pricePerNight" type="number" min="0" step="0.01" class="input-field">
+          <span class="symbol">€</span>
+        </div>
+      </div>
+
+      <button (click)="addRoom()" class="btn btn-primary add-btn">Aggiungi</button>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Lista camere -->
+  <section class="room-list">
+    <h2 class="list-title">Lista Camere</h2>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Posti Letto</th>
+      <th>Prezzo per notte</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let room of pagedRooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.beds }}</td>
+      <td>{{ room.pricePerNight | currency:'EUR' }}</td>
+      <td>
+        <button (click)="deleteRoom(room.id!)" class="btn btn-danger">Elimina</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Paginazione -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">«</button>
+  <button *ngFor="let page of [].constructor(totalPages); let i = index"
+          (click)="goToPage(i + 1)"
+          [class.active]="currentPage === i + 1">
+    {{ i + 1 }}
+  </button>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">»</button>
+</div>
+
+
+
+

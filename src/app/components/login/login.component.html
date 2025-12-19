@@ -1,0 +1,50 @@
+
+
+<div class="container">
+  <div class="header">
+    <div class="logo-wrapper">
+      <img src="assets/Images/logo2.jpeg" alt="Logo" class="logo">
+    </div>
+    <h2 class="title">CaDelFriul</h2>
+  </div>
+
+  <div class="input-group">
+  <input
+    [(ngModel)]="username"
+    type="text"
+    name="username"
+    placeholder="Username"
+    class="input-field"
+    autocomplete="username"
+  >
+</div>
+
+<div class="input-group">
+  <input
+    [(ngModel)]="password"
+    type="password"
+    name="password"
+    placeholder="Password"
+    class="input-field"
+    autocomplete="current-password"
+  >
+</div>
+
+
+  <div class="input-group remember-me">
+    <label>
+      <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+      Ricordami
+    </label>
+  </div>
+
+
+  <button (click)="login()" class="btn btn-primary">Accedi</button>
+
+  <div class="button-row">
+    <button (click)="goToRegister()" class="btn btn-secondary">Registrati</button>
+    <button (click)="resetPassword()" class="btn btn-tertiary">Reset Password</button>
+  </div>
+</div>
+
+  

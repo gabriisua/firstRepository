@@ -1,0 +1,69 @@
+
+<div class="rooms-grid">
+  <div 
+    *ngFor="let room of rooms" 
+    class="room-card"
+    [class.expanded]="selectedRoom === room"
+  >
+
+    <!-- HEADER CARD → serve per aprire -->
+    <div class="room-header" (click)="openRoom(room)">
+      <img [src]="getRoomImage(room.imagePath)" alt="{{ room.name }}">
+      <h3>{{ room.name }}</h3>
+    </div>
+
+    <!-- DETTAGLI VISIBILI SOLO QUANDO LA CARD È ESPANSA -->
+    <div class= "room"*ngIf="selectedRoom === room" class="room-details" (click)="$event.stopPropagation()">
+
+      <!-- X PER CHIUDERE LA CARD -->
+      <button class="close-btn" (click)="closeRoom($event)">✕</button>
+
+      <!-- Info base stanza -->
+      <div class="room-info">
+        <p><strong>Letti:</strong> {{ room.beds }}</p>
+        <p><strong>Prezzo per notte:</strong> € {{ room.pricePerNight }}</p>
+      </div>
+
+      <!-- Campi prenotazione -->
+      <div class="booking-fields">
+
+  <div class="field-group">
+    <label>Check-in</label>
+    <mat-form-field appearance="fill">
+      <input matInput 
+             [matDatepicker]="startPicker" 
+             [(ngModel)]="bookingDates.startDate"
+             (ngModelChange)="updateTotalPreview()"
+             [min]="today()" 
+             [matDatepickerFilter]="dateFilter">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="field-group">
+    <label>Check-out</label>
+    <mat-form-field appearance="fill">
+      <input matInput 
+             [matDatepicker]="endPicker" 
+             [(ngModel)]="bookingDates.endDate"
+             (ngModelChange)="updateTotalPreview()"
+             [min]="bookingDates.startDate || today()" 
+             [matDatepickerFilter]="dateFilter">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <!-- PREVIEW TOTALE -->
+  <div *ngIf="totalPreview !== null" class="total-preview">
+    <p><strong>Totale da pagare:</strong> € {{ totalPreview }}</p>
+  </div>
+
+</div>
+
+<button class="book-btn" (click)="submitBooking(); $event.stopPropagation()">Prenota</button>
+
+
+
+

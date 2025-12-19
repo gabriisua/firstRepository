@@ -1,0 +1,12 @@
+.logo {
+  display: flex;
+  align-items: center;   /* centra verticalmente */
+  height: 50px;          /* altezza toolbar compatibile */
+}
+
+/* Logo vero e proprio */
+.logo img {
+  max-height: 100%;      /* scala l'immagine all'altezza del contenitore */
+  max-width: 150px;      /* evita che sia troppo largo */
+  object-fit: contain;   /* mantiene proporzioni */
+}

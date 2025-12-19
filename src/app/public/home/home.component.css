@@ -1,0 +1,239 @@
+/* ===========================
+   Palette colori
+=========================== */
+:root {
+  --nero: #000000;
+  --bianco: #FFFFFF;
+  --bordeaux: #800020;
+  --bordeaux-chiaro: #B22222;
+  --grigio-scuro: #555555;
+  --nero-scuro: #1a1a1a;
+}
+
+/* ===========================
+   Tipografia globale
+=========================== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--bianco);
+  background-color: var(--nero);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--bianco);
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--bianco);
+  margin: 1rem 0;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--bordeaux-chiaro);
+  margin: 0.75rem 0;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--bianco);
+  line-height: 1.5;
+  margin: 0.5rem 0 1rem;
+}
+
+/* ===========================
+   Contenitori generali
+=========================== */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.section {
+  padding: 3rem 2rem;
+}
+
+/* ===========================
+   Pulsanti
+=========================== */
+.btn {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Pulsante principale */
+.btn-primary {
+  background-color: var(--bordeaux);
+  color: var(--bianco);
+  border: 2px solid var(--bordeaux);
+}
+
+.btn-primary:hover {
+  background-color: var(--bordeaux-chiaro);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Pulsanti secondari */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--bordeaux);
+  border: 2px solid var(--bordeaux);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bordeaux-chiaro);
+  color: var(--bianco);
+}
+
+/* Pulsanti terziari (opzionali) */
+.btn-tertiary {
+  background-color: transparent;
+  color: var(--grigio-scuro);
+  border: 2px solid var(--grigio-scuro);
+}
+
+.btn-tertiary:hover {
+  background-color: var(--grigio-scuro);
+  color: var(--bianco);
+}
+
+/* ===========================
+   Input e form
+=========================== */
+.input-field {
+  background-color: var(--nero-scuro);
+  border: 2px solid var(--bordeaux);
+  color: var(--bianco);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input-field::placeholder {
+  color: #AAAAAA;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--bordeaux-chiaro);
+  box-shadow: 0 0 8px var(--bordeaux-chiaro);
+}
+
+/* ===========================
+   Card generiche
+=========================== */
+.card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.6);
+  color: var(--bianco);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   Hero section
+=========================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 0 2rem;
+  padding-top: 70px; /* spazio per navbar */
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content h1 {
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  margin-bottom: 2rem;
+}
+
+/* Overlay sfumato */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+/* ===========================
+   Immagini responsive
+=========================== */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 768px) {
+  .cards, .fitness-content, .green-space {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <!-- Logo -->
+  <span class="logo">
+    <img src="assets/Images/logo2.jpeg" alt="CaDelFriul Logo">
+  </span>
+
+  <!-- Spacer per spingere i pulsanti a destra -->
+  <span class="spacer"></span>
+
+  <!-- Pulsanti pubblici -->
+  <a mat-button routerLink="/">Home</a>
+  <a mat-button routerLink="/rooms">Le nostre camere</a>
+  <a mat-button routerLink="/fitness">Fitness</a>
+  <a mat-button routerLink="/contacts">Contatti</a>
+
+  <!-- Dropdown account -->
+  <button mat-button [matMenuTriggerFor]="menu">Account</button>
+  <mat-menu #menu="matMenu">
+    <!-- Pulsanti pubblici -->
+    <button mat-menu-item routerLink="/login" [disabled]="isAuthenticated">Login</button>
+    <button mat-menu-item routerLink="/register" [disabled]="isAuthenticated">Registrazione</button>
+    <mat-divider></mat-divider>
+
+    <!-- Pulsanti autenticati -->
+    <button mat-menu-item routerLink="/booking" [disabled]="!isAuthenticated">
+      Booking
+    </button>
+    <button mat-menu-item routerLink="/" [disabled]="!isAdmin">
+      Gestione Camere
+    </button>
+    <button mat-menu-item routerLink="/users" [disabled]="!isAdmin">
+      Gestione Utenti
+    </button>
+
+    <!-- Logout -->
+    <button mat-menu-item (click)="logout()" [disabled]="!isAuthenticated">
+      Logout
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+

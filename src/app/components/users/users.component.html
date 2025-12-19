@@ -1,0 +1,41 @@
+<div class="users-container">
+
+  <h2>Gestione Utenti</h2>
+
+  <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Ruolo</th>
+        <th>Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>
+          <input [(ngModel)]="user.username" />
+        </td>
+        <td>
+          <input [(ngModel)]="user.email" />
+        </td>
+        <td>
+          <input [(ngModel)]="user.phoneNumber" />
+        </td>
+        <td>
+          <input [(ngModel)]="user.role" />
+        </td>
+        <td>
+          <button (click)="saveUser(user)">Salva</button>
+          <button (click)="deleteUser(user.id)">Elimina</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
